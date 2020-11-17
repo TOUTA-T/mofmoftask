@@ -1,0 +1,27 @@
+<h1>投稿一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>物件名</th>
+      <th>賃料</th>
+      <th>住所</th>
+      <th>築年数</th>
+      <th>備考</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @properties.each do |prop| %>
+      <tr>
+        <td><%= prop.name %></td>
+        <td><%= prop.fee %></td>
+        <td><%= prop.address %></td>
+        <td><%= prop.age %></td>
+        <td><%= prop.remarks %></td>
+        <td><%= link_to '詳細確認', property_path(prop) %></td>
+        <td><%= link_to '編集', edit_property_path(prop) %></td>
+        <td><%= link_to '削除', property_path(prop), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<li><%= link_to '新規投稿画面へ', new_property_path %></li>
